@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ítalo César | Software Developer</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { dark: '#0a0a0a', purple_neon: '#a855f7', surface: '#171717' },
+                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-dark text-gray-100 font-sans antialiased">
+
+    <div id="header"></div>
+
+    <main>
+        <section id="home" class="min-h-screen flex flex-col md:flex-row items-center justify-between px-6 max-w-6xl mx-auto pt-20 gap-12">
+            
+            <div class="w-full md:w-3/5 text-center md:text-left z-10">
+                
+                <h1 class="text-5xl md:text-5xl font-extrabold mb-6 leading-tight tracking-tighter text-white">
+                    Transformo problemas em <br><span class="gradient-text">soluções com código.</span>
+                </h1>
+                
+                <p class="text-gray-400 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto md:mx-0">
+                    Desenvolvedor Full Stack, formado em Ciência de Dados pela UEPB e cursando ADS. Movido por desafios, evolução constante e pela criação de aplicações que realmente fazem diferença.
+                </p>
+                
+                <div class="flex gap-4 justify-center md:justify-start">
+                    <a href="#projects" class="px-8 py-4 bg-purple_neon text-white rounded-full font-bold hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] hover:-translate-y-1 transition-all duration-300">
+                        Meus Projetos
+                    </a>
+                </div>
+                
+            </div>
+
+            <div class="w-full md:w-2/5 flex justify-center md:justify-end relative">
+                
+                <div class="absolute bg-purple_neon/30 blur-[80px] rounded-full w-64 h-64 md:w-80 md:h-80 z-0"></div>
+                
+                <div class="relative z-10 p-2 rounded-full border border-white/10 bg-dark/50 backdrop-blur-sm">
+                    <img 
+                        src="fotos\Capturar.jpg" 
+                        alt="Ítalo César" 
+                        class="w-64 h-64 md:w-80 md:h-[310px] object-cover rounded-full border-4 border-surface hover:border-purple_neon/50 hover:scale-105 transition-all duration-500"
+                    >
+                </div>
+
+            </div>
+            
+        </section>
+
+        <div id="tech"></div>
+        <div id="about"></div>
+        <div id="projects"></div>
+    </main>
+
+    <div id="footer"></div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
