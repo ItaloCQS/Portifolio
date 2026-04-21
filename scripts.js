@@ -4,7 +4,7 @@
  */
 async function loadComponent(id, path) {
     const element = document.getElementById(id);
-    if (!element) return; // Evita erro se o ID não existir no HTML
+    if (!element) return;
     
     const response = await fetch(path);        
     const html = await response.text();
@@ -24,10 +24,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         loadComponent('footer', 'components/footer.html')
     ]);
 
-    // 1. Só AGORA que o HTML existe, ativamos a animação
     initScrollAnimations();
 
-    // 2. Só AGORA ativamos os ícones (Lucide) para eles não sumirem
     if (window.lucide) {
         lucide.createIcons();
     }
@@ -38,19 +36,26 @@ function initScrollAnimations() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // Remove as classes que escondem o elemento
                 entry.target.classList.remove('opacity-0', 'translate-y-10', 'translate-y-12');
-                // Adiciona as classes que mostram o elemento
                 entry.target.classList.add('opacity-100', 'translate-y-0');
                 
                 // Opcional: faz o observer parar de olhar depois que animou a primeira vez
                 observer.unobserve(entry.target); 
             }
         });
-    }, { threshold: 0.15 }); // O efeito dispara quando 15% do elemento aparece na tela
+    }, { threshold: 0.15 });
 
-    // Seleciona todos os elementos com a classe 'reveal-element'
     document.querySelectorAll('.reveal-element').forEach((el) => {
         observer.observe(el);
     });
+
+    if (typeof VanillaTilt !== "undefined") {
+        VanillaTilt.init(document.querySelectorAll(".tilt-element"), {
+            max: 25,
+            speed: 500,
+            glare: true,
+            "max-glare": 0.3,
+            scale: 1.1
+        });
+    }
 }
