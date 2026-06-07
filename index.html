@@ -12,9 +12,16 @@
     
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
-                    colors: { dark: '#0a0a0a', purple_neon: '#a855f7', surface: '#171717' },
+                    colors: { 
+                        dark: '#0a0a0a', 
+                        surface: '#171717',
+                        light_bg: '#f8fafc',
+                        light_surface: '#ffffff',
+                        purple_neon: '#a855f7' 
+                    },
                     fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] }
                 }
             }
@@ -28,7 +35,8 @@
         }
     </style>
 </head>
-<body class="bg-dark text-gray-100 font-sans antialiased">
+
+<body class="bg-light_bg dark:bg-dark text-gray-800 dark:text-gray-100 font-sans antialiased transition-colors duration-500">
 
     <div id="header"></div>
 
@@ -37,11 +45,11 @@
             
             <div class="w-full md:w-3/5 text-center md:text-left z-10">
                 
-                <h1 class="text-5xl md:text-5xl font-extrabold mb-6 leading-tight tracking-tighter text-white">
+                <h1 class="text-5xl md:text-5xl font-extrabold mb-6 leading-tight tracking-tighter text-gray-900 dark:text-white transition-colors duration-500">
                     Transformo problemas em <br><span class="gradient-text">soluções com código.</span>
                 </h1>
                 
-                <p class="text-gray-400 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto md:mx-0">
+                <p class="text-gray-600 dark:text-gray-400 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto md:mx-0 transition-colors duration-500">
                     Desenvolvedor Full Stack, formado em Ciência de Dados pela UEPB. Movido por desafios, evolução constante e pela criação de aplicações que realmente fazem diferença.
                 </p>
                 
@@ -57,11 +65,11 @@
                 
                 <div class="absolute bg-purple_neon/30 blur-[80px] rounded-full w-64 h-64 md:w-80 md:h-80 z-0"></div>
                 
-                <div class="relative z-10 p-2 rounded-full border border-white/10 bg-dark/50 backdrop-blur-sm">
+                <div class="relative z-10 p-2 rounded-full border border-gray-200 dark:border-white/10 bg-white/50 dark:bg-dark/50 backdrop-blur-sm transition-colors duration-500">
                     <img 
                         src="fotos\Capturar.jpg" 
                         alt="Ítalo César" 
-                        class="w-64 h-64 md:w-80 md:h-[310px] object-cover rounded-full border-4 border-surface hover:border-purple_neon/50 hover:scale-105 transition-all duration-500"
+                        class="w-64 h-64 md:w-80 md:h-[310px] object-cover rounded-full border-4 border-light_surface dark:border-surface hover:border-purple_neon/50 dark:hover:border-purple_neon/50 hover:scale-105 transition-all duration-500"
                     >
                 </div>
 

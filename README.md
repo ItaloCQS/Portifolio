@@ -1,3 +1,3 @@
-**link to site**
+**link to portifolio**
 
 https://italocesar.pages.dev/

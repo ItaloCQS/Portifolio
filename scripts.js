@@ -11,10 +11,8 @@ async function loadComponent(id, path) {
     element.innerHTML = html;
 }
 
-// Transformamos essa função em 'async'
 document.addEventListener('DOMContentLoaded', async () => {
     
-    // O Promise.all faz o site carregar tudo ao mesmo tempo e espera terminar
     await Promise.all([
         loadComponent('header', 'components/header.html'),
         loadComponent('tech', 'components/tecnologias.html'),
@@ -26,12 +24,44 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     initScrollAnimations();
 
+    setupThemeToggle();
+
     if (window.lucide) {
         lucide.createIcons();
     }
 });
 
-// Função para animar os elementos quando aparecem na tela (Scroll Reveal)
+function setupThemeToggle() {
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeIconSun = document.getElementById('theme-icon-sun');
+    const themeIconMoon = document.getElementById('theme-icon-moon');
+    const htmlElement = document.documentElement;
+
+    if (localStorage.getItem('theme') === 'light') {
+        htmlElement.classList.add('light');
+        htmlElement.classList.remove('dark');
+        themeIconSun.classList.add('hidden');
+        themeIconMoon.classList.remove('hidden');
+    } else {
+        htmlElement.classList.add('dark'); 
+    }
+
+    themeToggleBtn?.addEventListener('click', () => {
+        htmlElement.classList.toggle('dark');
+        htmlElement.classList.toggle('light');
+        
+        if (htmlElement.classList.contains('light')) {
+            localStorage.setItem('theme', 'light');
+            themeIconSun.classList.add('hidden');
+            themeIconMoon.classList.remove('hidden');
+        } else {
+            localStorage.setItem('theme', 'dark');
+            themeIconSun.classList.remove('hidden');
+            themeIconMoon.classList.add('hidden');
+        }
+    });
+}
+
 function initScrollAnimations() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -39,7 +69,6 @@ function initScrollAnimations() {
                 entry.target.classList.remove('opacity-0', 'translate-y-10', 'translate-y-12');
                 entry.target.classList.add('opacity-100', 'translate-y-0');
                 
-                // Opcional: faz o observer parar de olhar depois que animou a primeira vez
                 observer.unobserve(entry.target); 
             }
         });
